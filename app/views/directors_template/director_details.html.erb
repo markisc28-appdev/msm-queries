@@ -1,17 +1,11 @@
 <h1>
-  Director <%= @the_director.id%> details
+  Director #<%= @the_director.id%> details
 </h1>
 
 <a href="/directors" class="btn btn-block btn-outline-secondary">
   Go back
 </a>
 
-&nbsp;|&nbsp;
-
-<a href="/delete_director/<%= @the_director.id%>" class="btn btn-block btn-outline-secondary">
-  Delete director
-  <small>(Building this link is not required. It's an optional stretch goal; but, you have the tools if you want to give it a try.)</small>
-</a>
 
 <hr>
 
@@ -58,3 +52,23 @@
     over 7 years ago
   </dd>
 </dl>
+
+<h2>Filmography</h2>
+<table border = "1">
+<% @list_of_movies.each do |a_thing| %>
+  <tr>
+    <td><%= a_thing.id %></td>
+    <td>
+      <img src="<%= a_thing.image%>">
+    </td>
+    <td><%= a_thing.title %></td>
+    <td><%= a_thing.year %></td>
+    <td><%= @the_director.name %></td>
+    <td>
+      <a href ="/movies/<%= a_thing.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+<% end %>
+</table>
