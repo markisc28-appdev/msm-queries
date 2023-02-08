@@ -12,6 +12,13 @@ class DirectorsController < ApplicationController
 
   def youngest
     @youngest = Director.order({ :dob => :desc }).at(0)
-    render({ :template => "directors_templates/youngest.html.erb"})
+    render({ :template => "directors_template/youngest.html.erb"})
+  end
+
+  def director_details
+    director_id = params.fetch("id")
+    @the_director = Director.where({ :id => director_id}).at(0)
+
+    render({ :template => "directors_template/director_details.html.erb"})
   end
 end
